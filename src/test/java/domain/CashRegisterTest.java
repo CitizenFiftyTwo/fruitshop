@@ -2,6 +2,7 @@ package domain;
 
 import org.junit.jupiter.api.Test;
 
+import static domain.CashRegister.CERISE_DISCOUNT;
 import static domain.FruitPrice.BANANE;
 import static domain.FruitPrice.CERISE;
 import static domain.FruitPrice.POMME;
@@ -35,7 +36,7 @@ class CashRegisterTest {
         cashRegister.addInBasket(CERISE.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 2 - 30);
+        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 2 - CERISE_DISCOUNT);
     }
 
     @Test
@@ -47,7 +48,7 @@ class CashRegisterTest {
         cashRegister.addInBasket(CERISE.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 4 - 60);
+        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 4 - CERISE_DISCOUNT * 2);
     }
 
     @Test

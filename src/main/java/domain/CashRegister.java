@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CashRegister {
 
-    public static final int CERISE_DISCOUNT = 30;
+    public static final int CERISE_DISCOUNT = 20;
 
     private final List<FruitPrice> purchases = new ArrayList();
 
