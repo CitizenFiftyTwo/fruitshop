@@ -7,13 +7,15 @@ public class Application {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        String input = in.nextLine();
-
         CashRegister cashRegister = new CashRegister();
 
-        System.out.println("Your input :" + input);
+        while (true) {
+            String input = in.nextLine();
 
-        in.close();
+            cashRegister.addInBasket(input);
+
+            System.out.println("Price : " + cashRegister.getTotal());
+        }
     }
 
 }
