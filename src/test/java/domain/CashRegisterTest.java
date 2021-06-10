@@ -2,6 +2,7 @@ package domain;
 
 import org.junit.jupiter.api.Test;
 
+import static domain.FruitPrice.BANANE;
 import static domain.FruitPrice.CERISE;
 import static domain.FruitPrice.POMME;
 import static org.assertj.core.api.Assertions.assertThat;
