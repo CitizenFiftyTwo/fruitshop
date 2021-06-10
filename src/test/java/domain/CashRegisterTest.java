@@ -27,4 +27,25 @@ class CashRegisterTest {
         assertThat(cashRegister.getTotal()).isEqualTo(POMME.getPrice() + CERISE.getPrice());
     }
 
+    @Test
+    public void should_make_discount_when_two_cerises() {
+        CashRegister cashRegister = new CashRegister();
+
+        cashRegister.addInBasket(CERISE.name());
+        cashRegister.addInBasket(CERISE.name());
+
+        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 2 - 20);
+    }
+
+    @Test
+    public void should_more_discount_when_four_cerises() {
+        CashRegister cashRegister = new CashRegister();
+
+        cashRegister.addInBasket(CERISE.name());
+        cashRegister.addInBasket(CERISE.name());
+        cashRegister.addInBasket(CERISE.name());
+        cashRegister.addInBasket(CERISE.name());
+
+        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 4 - 40);
+    }
 }

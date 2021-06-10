@@ -1,8 +1,8 @@
 package domain;
 
 public enum FruitPrice {
+    CERISE(75),
     POMME(100),
-    CERISE(150),
     BANANE(250) ;
 
     private final int price;
