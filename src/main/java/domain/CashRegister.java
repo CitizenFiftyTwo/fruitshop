@@ -15,16 +15,18 @@ public class CashRegister {
     }
 
     public int getTotal() {
-        int numberOfCerises = Collections.frequency(purchases, FruitPrice.CERISE);
-        int ceriseDiscount = (numberOfCerises / 2) * CERISE_DISCOUNT;
-
-        int numberOfBananes = Collections.frequency(purchases, FruitPrice.BANANE);
-        int bananeDiscount = (numberOfBananes / 2) * FruitPrice.BANANE.getPrice();
+        int ceriseDiscount = calculateDiscount(FruitPrice.CERISE, CERISE_DISCOUNT);
+        int bananeDiscount = calculateDiscount(FruitPrice.BANANE, FruitPrice.BANANE.getPrice());
 
         int total = purchases.stream()
                 .map(FruitPrice::getPrice)
                 .reduce(0, Integer::sum);
 
         return total - ceriseDiscount - bananeDiscount;
+    }
+
+    private int calculateDiscount(FruitPrice fruit, int discountAmount) {
+        int numberOfBananes = Collections.frequency(purchases, fruit);
+        return (numberOfBananes / 2) * discountAmount;
     }
 }
