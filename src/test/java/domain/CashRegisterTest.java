@@ -3,9 +3,9 @@ package domain;
 import org.junit.jupiter.api.Test;
 
 import static domain.CashRegister.CERISE_DISCOUNT;
-import static domain.FruitPrice.BANANE;
-import static domain.FruitPrice.CERISE;
-import static domain.FruitPrice.POMME;
+import static domain.FruitType.BANANE;
+import static domain.FruitType.CERISE;
+import static domain.FruitType.POMME;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CashRegisterTest {
@@ -16,7 +16,7 @@ class CashRegisterTest {
 
         cashRegister.addInBasket(POMME.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(POMME.getPrice());
+        assertThat(cashRegister.getTotal()).isEqualTo(FruitPrice.of(POMME).getPrice());
     }
 
     @Test
@@ -26,7 +26,7 @@ class CashRegisterTest {
         cashRegister.addInBasket(POMME.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(POMME.getPrice() + CERISE.getPrice());
+        assertThat(cashRegister.getTotal()).isEqualTo(FruitPrice.of(CERISE).getPrice() + FruitPrice.of(POMME).getPrice());
     }
 
     @Test
@@ -36,7 +36,7 @@ class CashRegisterTest {
         cashRegister.addInBasket(CERISE.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 2 - CERISE_DISCOUNT);
+        assertThat(cashRegister.getTotal()).isEqualTo(FruitPrice.of(CERISE).getPrice() * 2 - CERISE_DISCOUNT);
     }
 
     @Test
@@ -48,7 +48,7 @@ class CashRegisterTest {
         cashRegister.addInBasket(CERISE.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 4 - CERISE_DISCOUNT * 2);
+        assertThat(cashRegister.getTotal()).isEqualTo(FruitPrice.of(CERISE).getPrice() * 4 - CERISE_DISCOUNT * 2);
     }
 
     @Test
@@ -58,6 +58,6 @@ class CashRegisterTest {
         cashRegister.addInBasket(BANANE.name());
         cashRegister.addInBasket(BANANE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(BANANE.getPrice());
+        assertThat(cashRegister.getTotal()).isEqualTo(FruitPrice.of(BANANE).getPrice());
     }
 }

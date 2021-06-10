@@ -13,7 +13,7 @@ public class Application {
         while (true) {
             String input = in.nextLine();
 
-            cashRegister.addInBasket(FruitDictionary.valueOf(input).getFruitPrice().name());
+            cashRegister.addInBasket(FruitDictionary.valueOf(input).getFruitType().name());
 
             System.out.println("Price : " + cashRegister.getTotal());
         }

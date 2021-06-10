@@ -1,8 +1,9 @@
 package domain;
 
-import static domain.FruitPrice.BANANE;
-import static domain.FruitPrice.CERISE;
-import static domain.FruitPrice.POMME;
+
+import static domain.FruitType.BANANE;
+import static domain.FruitType.CERISE;
+import static domain.FruitType.POMME;
 
 public enum FruitDictionary {
     CERISES(CERISE),
@@ -11,13 +12,13 @@ public enum FruitDictionary {
     POMMES(POMME),
     APPLES(POMME);
 
-    private final FruitPrice fruitPrice;
+    private final FruitType fruitType;
 
-    FruitDictionary(FruitPrice fruitPrice) {
-        this.fruitPrice = fruitPrice ;
+    FruitDictionary(FruitType fruitType) {
+        this.fruitType = fruitType;
     }
 
-    public FruitPrice getFruitPrice() {
-        return this.fruitPrice;
+    public FruitType getFruitType() {
+        return this.fruitType;
     }
 }

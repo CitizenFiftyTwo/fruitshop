@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static domain.FruitType.BANANE;
+
 public class CashRegister {
 
     public static final int CERISE_DISCOUNT = 20;
@@ -11,12 +13,12 @@ public class CashRegister {
     private final List<FruitPrice> purchases = new ArrayList();
 
     public void addInBasket(String name) {
-        purchases.add(FruitPrice.valueOf(name));
+        purchases.add(FruitPrice.of(FruitType.valueOf(name)));
     }
 
     public int getTotal() {
-        int ceriseDiscount = calculateDiscount(FruitPrice.CERISE, CERISE_DISCOUNT);
-        int bananeDiscount = calculateDiscount(FruitPrice.BANANE, FruitPrice.BANANE.getPrice());
+        int ceriseDiscount = calculateDiscount(FruitType.CERISE, CERISE_DISCOUNT);
+        int bananeDiscount = calculateDiscount(BANANE, FruitPrice.of(BANANE).getPrice());
 
         int total = purchases.stream()
                 .map(FruitPrice::getPrice)
@@ -25,8 +27,8 @@ public class CashRegister {
         return total - ceriseDiscount - bananeDiscount;
     }
 
-    private int calculateDiscount(FruitPrice fruit, int discountAmount) {
-        int numberOfBananes = Collections.frequency(purchases, fruit);
+    private int calculateDiscount(FruitType fruit, int discountAmount) {
+        int numberOfBananes = Collections.frequency(purchases, FruitPrice.of(fruit));
         return (numberOfBananes / 2) * discountAmount;
     }
 }
