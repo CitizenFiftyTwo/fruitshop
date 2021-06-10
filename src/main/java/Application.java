@@ -1,4 +1,5 @@
 import domain.CashRegister;
+import domain.FruitDictionary;
 
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class Application {
         while (true) {
             String input = in.nextLine();
 
-            cashRegister.addInBasket(input);
+            cashRegister.addInBasket(FruitDictionary.valueOf(input).getFruitPrice().name());
 
             System.out.println("Price : " + cashRegister.getTotal());
         }

@@ -7,7 +7,7 @@ public enum FruitPrice {
 
     private final int price;
 
-    private FruitPrice(int price) {
+    FruitPrice(int price) {
         this.price = price ;
     }
 
