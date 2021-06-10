@@ -6,7 +6,9 @@ import java.util.List;
 
 public class CashRegister {
 
-    private List<FruitPrice> purchases = new ArrayList();
+    public static final int CERISE_DISCOUNT = 30;
+
+    private final List<FruitPrice> purchases = new ArrayList();
 
     public void addInBasket(String name) {
         purchases.add(FruitPrice.valueOf(name));
@@ -14,12 +16,15 @@ public class CashRegister {
 
     public int getTotal() {
         int numberOfCerises = Collections.frequency(purchases, FruitPrice.CERISE);
-        int discount = (numberOfCerises / 2) * 20;
+        int ceriseDiscount = (numberOfCerises / 2) * CERISE_DISCOUNT;
+
+        int numberOfBananes = Collections.frequency(purchases, FruitPrice.BANANE);
+        int bananeDiscount = (numberOfBananes / 2) * FruitPrice.BANANE.getPrice();
 
         int total = purchases.stream()
                 .map(FruitPrice::getPrice)
                 .reduce(0, Integer::sum);
 
-        return total - discount;
+        return total - ceriseDiscount - bananeDiscount;
     }
 }

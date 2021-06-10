@@ -35,7 +35,7 @@ class CashRegisterTest {
         cashRegister.addInBasket(CERISE.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 2 - 20);
+        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 2 - 30);
     }
 
     @Test
@@ -47,6 +47,16 @@ class CashRegisterTest {
         cashRegister.addInBasket(CERISE.name());
         cashRegister.addInBasket(CERISE.name());
 
-        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 4 - 40);
+        assertThat(cashRegister.getTotal()).isEqualTo(CERISE.getPrice() * 4 - 60);
+    }
+
+    @Test
+    public void one_banane_bought_one_free() {
+        CashRegister cashRegister = new CashRegister();
+
+        cashRegister.addInBasket(BANANE.name());
+        cashRegister.addInBasket(BANANE.name());
+
+        assertThat(cashRegister.getTotal()).isEqualTo(BANANE.getPrice());
     }
 }
